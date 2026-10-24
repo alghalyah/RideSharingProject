@@ -14,6 +14,8 @@ public class Rider extends Person implements IRider {
     
     public Rider (int id) {
     super(id);
+    email = "";
+    homeCity = "";        
 }
     @Override
      public String getEmail() {
@@ -37,7 +39,7 @@ public class Rider extends Person implements IRider {
     
 @Override
     public int compareTo(IRider other) {
-     return( this.getId() - other.getId() ) ;
+    return Integer.compare(this.getId(), other.getId());
     }
     
 @Override

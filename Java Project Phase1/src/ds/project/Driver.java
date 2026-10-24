@@ -14,9 +14,9 @@ public class Driver extends Person implements IDriver {
     private VehicleType vehicleType;
             
             
-            
     public Driver(int id) {
         super(id); 
+       vehiclePlate = "";
     }
     
     
@@ -58,11 +58,11 @@ public class Driver extends Person implements IDriver {
 
 @Override
    public int compareTo(IDriver other) {
-    return( this.getId() - other.getId() );
-    }
+   return Integer.compare(this.getId(), other.getId());
+   }
         @Override
         public String toString () {
-            return super.toString() + " Veichle Type: " + vehicleType + " Veichle Plate: "  
+            return super.toString() + " Vehicle Type: " + vehicleType + " Vehicle Plate: "  
                     + vehiclePlate;
         }
 
