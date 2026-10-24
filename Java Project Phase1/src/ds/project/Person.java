@@ -20,6 +20,8 @@ import ds.project.IRide;
         this.id =id;
         name = "";
         phoneNumber = "";
+        rideHistory = new LinkedList<IRide>();
+
     }
     
     public int getId() {
