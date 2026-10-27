@@ -165,7 +165,7 @@ public LinkedList<IRider> findByHomeCity(String homeCity) {
     }
         return false;
         /*here findByEmail already makes the node point at the driver of wanted Email,
-        which makes remove valid
+        which makes remove valid 
         */
 
   }
