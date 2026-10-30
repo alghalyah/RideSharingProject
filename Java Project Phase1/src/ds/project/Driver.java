@@ -32,16 +32,16 @@ public class Driver extends Person implements IDriver {
 
     if (vehiclePlate == null || vehiclePlate.length() != 7)
         throw new IllegalArgumentException("Plate length is invalid");
-
+//checks if veichle plate is the appropriate length
     for (int i = 0; i < 3; i++)
         if (!Character.isLetter(vehiclePlate.charAt(i))
                 || !Character.isUpperCase(vehiclePlate.charAt(i)))
             throw new IllegalArgumentException("Plate must contain 3 upper case letters");
-
+//checks for 3 uppercase letters
     for (int i = 3; i < 7; i++)
         if (!Character.isDigit(vehiclePlate.charAt(i)))
             throw new IllegalArgumentException("Plate must contain 4 digits");
-
+//checks for 4 digits
     this.vehiclePlate = vehiclePlate;
 }
 
@@ -60,12 +60,15 @@ public class Driver extends Person implements IDriver {
    public int compareTo(IDriver other) {
    return Integer.compare(this.getId(), other.getId());
    }
-        @Override
-        public String toString () {
-            return super.toString() + " Vehicle Type: " + vehicleType + " Vehicle Plate: "  
-                    + vehiclePlate;
-        }
-
+   
+ @Override
+public String toString() {
+    return "Name: " + getName() + " Phone Number: " + getPhoneNumber()
+            + " ID: " + getId() + " Vehicle Type: " + vehicleType
+            + " Vehicle Plate: " + vehiclePlate;
+}
+            
+          
 }
     
     

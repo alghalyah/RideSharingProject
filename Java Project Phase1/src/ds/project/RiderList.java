@@ -42,7 +42,7 @@ public class RiderList implements IRiderList {
 
             riders.update(rider);
             riders.insert(temp);
-
+//holds the value temporarily then inserts it after 
             return true;
         }
 
@@ -175,7 +175,7 @@ public LinkedList<IRider> findByHomeCity(String homeCity) {
       
       if(!riders.empty()) {
           riders.findfirst();
-          
+          //checks if rider exists
           while(!riders.last()) {
               if(riders.retrieve().getName().equalsIgnoreCase(fullName)) {
                   riders.remove();
@@ -202,7 +202,7 @@ public LinkedList<IRider> findByHomeCity(String homeCity) {
       
       if(!riders.empty()) {
           riders.findfirst();
-          
+          //checks if rider exists
           while(!riders.last()) {
               if(riders.retrieve().getHomeCity().equalsIgnoreCase(homeCity)) {
                   riders.remove();

@@ -477,10 +477,11 @@ while(true){
                  ridersList.findnext();
                  }
              }
-         
+    }
          if(found.last())
                  break;
-         found.findnext();}
+    
+         found.findnext();
 }
     return result;
          }

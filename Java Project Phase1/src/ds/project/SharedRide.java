@@ -3,46 +3,74 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ds.project;
+
 public class SharedRide extends Ride implements ISharedRide {
+
     private final LinkedList<IRider> participants = new LinkedList<>();
 
     public SharedRide(String pickupLocation, IDateTime pickupTime, IDateTime dropoffTime,
-                      String dropoffLocation, IDriver driver) {
+            String dropoffLocation, IDriver driver) {
         super(pickupLocation, pickupTime, dropoffTime, dropoffLocation, driver);
     }
-    public LinkedList<IRider> getParticipants() { return participants; }
+
+    public LinkedList<IRider> getParticipants() {
+        return participants;
+    }
+//adds a rider if they are not already participating.
     public boolean addParticipant(IRider rider) {
-        if (rider == null || hasRider(rider.getId())) return false;
+        if (rider == null || hasRider(rider.getId())) {
+            return false;
+        }
         if (!participants.empty()) {
             participants.findfirst();
-            while (!participants.last()) participants.findnext();
+            while (!participants.last()) {
+                participants.findnext();
+            }
         }
         participants.insert(rider);
         return true;
     }
+//removes a rider using their id
     public boolean removeParticipantById(int riderId) {
-        if (participants.empty()) return false;
+        if (participants.empty()) {
+            return false;
+        }
         participants.findfirst();
         while (true) {
             if (participants.retrieve().getId() == riderId) {
                 participants.remove();
                 return true;
             }
-            if (participants.last()) break;
+            if (participants.last()) {
+                break;
+            }
             participants.findnext();
         }
         return false;
     }
+//checks if a rider is already participating
     public boolean hasRider(int riderId) {
-        if (participants.empty()) return false;
+        if (participants.empty()) {
+            return false;
+        }
         participants.findfirst();
         while (true) {
-            if (participants.retrieve().getId() == riderId) return true;
-            if (participants.last()) break;
+            if (participants.retrieve().getId() == riderId) {
+                return true;
+            }
+            if (participants.last()) {
+                break;
+            }
             participants.findnext();
         }
         return false;
     }
-    public boolean isEmpty() { return participants.empty(); }
-    public String toString() { return "Shared " + super.toString(); }
+
+    public boolean isEmpty() {
+        return participants.empty();
+    }
+
+    public String toString() {
+        return "Shared " + super.toString();
+    }
 }

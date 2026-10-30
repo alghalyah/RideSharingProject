@@ -48,7 +48,9 @@ public class JavaProjectPhase1 {
             System.out.println("    12. Add a ride.");
             System.out.println("    0. Exit the program.");
            
+         
             System.out.println("\nEnter your choice:");
+           
             choice = input.nextInt();
            
             switch (choice)
@@ -146,7 +148,7 @@ public class JavaProjectPhase1 {
                     String value =input.nextLine();
                     value =input.nextLine();
                    
-                    VehicleType vehicleType = VehicleType.valueOf(value);
+                    VehicleType vehicleType = VehicleType.valueOf(value.trim().toUpperCase().replace(' ', '_'));                   
                     
                     LinkedList<IDriver> result = rideSharingSystem.searchDriversByVehicleType(vehicleType);
                    if(result.empty()){
@@ -183,8 +185,7 @@ public class JavaProjectPhase1 {
                     String value = input.nextLine();
                      //value = input.nextLine();
                     
-                    VehicleType vehicleType = VehicleType.valueOf(value);
-                   
+                    VehicleType vehicleType = VehicleType.valueOf(value.trim().toUpperCase().replace(' ', '_'));                   
                     System.out.println("enter driver vehicle plate");
                     String vehiclePlate = input.nextLine();
                     //vehiclePlate = input.nextLine();
@@ -233,7 +234,8 @@ public class JavaProjectPhase1 {
                    String rname = input.nextLine();
                    
                    
-                   printRides(rideSharingSystem.searchRidesByRiderName(rname));
+      
+              printRides(rideSharingSystem.searchRidesByRiderName(rname));
    
                 }
                 break;
@@ -323,6 +325,7 @@ public class JavaProjectPhase1 {
                 default:
                     System.out.println("Bad choice! Try again `");
             }
+            
         }while ( choice != 0);
        
     }
@@ -384,7 +387,7 @@ public class JavaProjectPhase1 {
         
         
         
-        // TODO code application logic here
+       
     
     
 

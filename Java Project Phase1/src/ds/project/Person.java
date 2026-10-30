@@ -49,13 +49,13 @@ import ds.project.IRide;
         throw new IllegalArgumentException(
             "Phone number must contain exactly 10 digits"
         );
-
+// checks if phone number is appropriate length
     for (int i = 0; i < phoneNumber.length(); i++) {
         if (!Character.isDigit(phoneNumber.charAt(i)))
             throw new IllegalArgumentException(
                 "Please enter digits only"
             );
-    }
+    }//makes sure the phone number consists of digits only
 
     this.phoneNumber = phoneNumber;
 }
@@ -68,9 +68,7 @@ import ds.project.IRide;
     }
     
  @Override   
-    public String toString() {
-    return "Name: " + name + " Phone Number: " + phoneNumber + " ID: " + id;
-}
+    public abstract String toString();
 
     
 }
