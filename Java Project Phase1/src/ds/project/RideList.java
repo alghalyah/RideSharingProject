@@ -17,14 +17,14 @@ public class RideList implements IRideList {
             return true;
         }
 
-        rides.findFirst();
+        rides.findfirst();
         while (true) {
             if (rides.retrieve().getRideId() == ride.getRideId()) return false;
             if (rides.last()) break;
-            rides.findNext();
+            rides.findnext();
         }
 
-        rides.findFirst();
+        rides.findfirst();
         while (true) {
             IRide existingRide = rides.retrieve();
 
@@ -40,14 +40,14 @@ public class RideList implements IRideList {
                 count++;
                 return true;
             }
-            rides.findNext();
+            rides.findnext();
         }
     }
 
     public boolean removeRideById(int rideId) {
         if (rides.empty()) return false;
 
-        rides.findFirst();
+        rides.findfirst();
         while (true) {
             if (rides.retrieve().getRideId() == rideId) {
                 rides.remove();
@@ -55,7 +55,7 @@ public class RideList implements IRideList {
                 return true;
             }
             if (rides.last()) break;
-            rides.findNext();
+            rides.findnext();
         }
         return false;
     }
@@ -64,11 +64,11 @@ public class RideList implements IRideList {
         LinkedList<IRide> result = new LinkedList<>();
         if (rides.empty()) return result;
 
-        rides.findFirst();
+        rides.findfirst();
         while (true) {
             result.insert(rides.retrieve());
             if (rides.last()) break;
-            rides.findNext();
+            rides.findnext();
         }
         return result;
     }
@@ -77,14 +77,14 @@ public class RideList implements IRideList {
         LinkedList<IRide> result = new LinkedList<>();
         if (pickupLocation == null || rides.empty()) return result;
 
-        rides.findFirst();
+        rides.findfirst();
         while (true) {
             IRide ride = rides.retrieve();
             if (pickupLocation.equalsIgnoreCase(ride.getPickupLocation())) {
                 result.insert(ride);
             }
             if (rides.last()) break;
-            rides.findNext();
+            rides.findnext();
         }
         return result;
     }
@@ -93,7 +93,7 @@ public class RideList implements IRideList {
         LinkedList<IRide> result = new LinkedList<>();
         if (riderFullName == null || rides.empty()) return result;
 
-        rides.findFirst();
+        rides.findfirst();
         while (true) {
             IRide ride = rides.retrieve();
             boolean found = false;
@@ -104,7 +104,7 @@ public class RideList implements IRideList {
             } else if (ride instanceof ISharedRide) {
                 LinkedList<IRider> participants = ((ISharedRide) ride).getParticipants();
                 if (participants != null && !participants.empty()) {
-                    participants.findFirst();
+                    participants.findfirst();
                     while (true) {
                         IRider rider = participants.retrieve();
                         if (rider != null && riderFullName.equalsIgnoreCase(rider.getName())) {
@@ -112,14 +112,14 @@ public class RideList implements IRideList {
                             break;
                         }
                         if (participants.last()) break;
-                        participants.findNext();
+                        participants.findnext();
                     }
                 }
             }
 
             if (found) result.insert(ride);
             if (rides.last()) break;
-            rides.findNext();
+            rides.findnext();
         }
         return result;
     }
