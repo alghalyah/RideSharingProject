@@ -14,32 +14,32 @@ public class SharedRide extends Ride implements ISharedRide {
     public boolean addParticipant(IRider rider) {
         if (rider == null || hasRider(rider.getId())) return false;
         if (!participants.empty()) {
-            participants.findFirst();
-            while (!participants.last()) participants.findNext();
+            participants.findfirst();
+            while (!participants.last()) participants.findnext();
         }
         participants.insert(rider);
         return true;
     }
     public boolean removeParticipantById(int riderId) {
         if (participants.empty()) return false;
-        participants.findFirst();
+        participants.findfirst();
         while (true) {
             if (participants.retrieve().getId() == riderId) {
                 participants.remove();
                 return true;
             }
             if (participants.last()) break;
-            participants.findNext();
+            participants.findnext();
         }
         return false;
     }
     public boolean hasRider(int riderId) {
         if (participants.empty()) return false;
-        participants.findFirst();
+        participants.findfirst();
         while (true) {
             if (participants.retrieve().getId() == riderId) return true;
             if (participants.last()) break;
-            participants.findNext();
+            participants.findnext();
         }
         return false;
     }
