@@ -85,6 +85,7 @@ public class JavaProjectPhase1 {
                
                 case 4: // add rider
                 {
+                    try {
                     System.out.println("enter rider id");
                     int uniqueID = input.nextInt();
                    
@@ -94,19 +95,19 @@ public class JavaProjectPhase1 {
 
                     System.out.println("enter rider phone number");
                     String phonenumber = input.nextLine();
-                    //phonenumber = input.nextLine();
+                    
 
                     System.out.println("enter rider email");
                     String email = input.nextLine();
-                     //email = input.nextLine();
+                    
                     
                     System.out.println("enter rider home city");
                     String homecity = input.nextLine();
-                    //homecity = input.nextLine();
+                   
 
                     if (( rideSharingSystem.searchRiderById(uniqueID) != null)
                             || (rideSharingSystem.searchRiderByEmail(email) != null) )
-                        System.out.println("rider added before " + uniqueID + "(" + email + ")" );
+                        System.out.println("rider already exists " + "( #" + uniqueID + " )"    );
                     else
                     {
                         IRider rider = new Rider (uniqueID);
@@ -119,6 +120,10 @@ public class JavaProjectPhase1 {
                         else
                             System.out.println("rider added successfully");
                     }
+                }
+                     catch (IllegalArgumentException e) {
+                     System.out.println("Invalid phone number: " + e.getMessage());
+                     }
                 }
                 break;
                
@@ -170,6 +175,7 @@ public class JavaProjectPhase1 {
                
                 case 7: // add driver
                 {
+                    try{
                     System.out.println("enter driver id");
                     int uniqueID = input.nextInt();
                    
@@ -192,7 +198,7 @@ public class JavaProjectPhase1 {
 
                     if (( rideSharingSystem.searchDriverById(uniqueID) != null)
                             || (rideSharingSystem.searchDriverByVehiclePlate(vehiclePlate) != null) )
-                        System.out.println("driver added before " + uniqueID + "(" + vehiclePlate + ")" );
+                        System.out.println("driver already exists " + "( #" + uniqueID + " )" );
                     else
                     {
                         IDriver driver = new Driver (uniqueID);
@@ -204,7 +210,12 @@ public class JavaProjectPhase1 {
                             System.out.println("driver could not be added" );
                         else
                             System.out.println("driver added successfully");
-                    }
+               
+                   }
+                }
+                     catch (IllegalArgumentException e) {
+                     System.out.println("Invalid!: " + e.getMessage());
+                     }
                 }
                 break;
                
@@ -253,6 +264,7 @@ public class JavaProjectPhase1 {
                
                 case 12: //Add a ride (ask the user whether it is private or shared, then prompt accordingly).
                 {
+                    try {
                     System.out.println("Enter (S) Shared Ride or (P) Private Ride");
                     char ch = input.next().charAt(0);
                     input.nextLine();
@@ -312,6 +324,10 @@ public class JavaProjectPhase1 {
 
                     } else {
                         System.out.println("Invalid ride type");
+                    }
+                }
+                    catch (Exception e){
+                        System.out.println("Invalid!: " +  e.getMessage());
                     }
                 }
                 break;

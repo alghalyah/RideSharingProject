@@ -14,9 +14,11 @@ public abstract class Ride implements IRide {
 
     protected Ride(String pickupLocation, IDateTime pickupTime, IDateTime dropoffTime,
             String dropoffLocation, IDriver driver) {
-        if (pickupLocation == null || dropoffLocation == null || pickupTime == null || dropoffTime == null) {
+        if (pickupLocation == null ||pickupLocation.isEmpty()
+          || dropoffLocation == null || dropoffLocation.isEmpty()
+          ||pickupTime == null ||dropoffTime == null) {
             throw new IllegalArgumentException("Ride details cannot be null");
-        }//ensures that no ride details are null
+        }//ensures that no ride details are null including "" entries which is why isEmpty() is used
         if (pickupTime.compareTo(dropoffTime) >= 0) {
             throw new IllegalArgumentException("Drop-off must be after pickup");
         }

@@ -114,7 +114,8 @@ public LinkedList  <IDriver> searchDriversByVehicleType( VehicleType vehicleType
  }
  
  
- @Override
+ 
+@Override
  public boolean removeRider(int riderId){
      
      IRider rider =searchRiderById(riderId);
@@ -166,22 +167,23 @@ public LinkedList  <IDriver> searchDriversByVehicleType( VehicleType vehicleType
                      }
 
                  }
-
-                 if (allRides.last()) {
-                     break;
-                 }
-
-                 allRides.findnext();
              }
 
-         }}
+             if (allRides.last()) {
+                 break;
+             }
+
+             allRides.findnext();
+
+         }
+     }
 
          //remove rider fom rifer list
          riders.removeById(riderId);
      
          return true;
      }
-     
+
  
  @Override
  public boolean removeDriver(int driverId){
